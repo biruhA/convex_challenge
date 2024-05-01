@@ -1,10 +1,15 @@
 import React from "react";
 import { state } from "../../utils";
 
-export const RecentBetCard = ({ betStatus }) => {
-  const borderColor =
-    betStatus === state.Win ? "border-primary25" : "border-error";
-  const betVale = betStatus === state.Win ? "text-primary" : "text-error";
+export const RecentBetCard = ({
+  drawnStatus,
+  betAmount,
+  profitOnWin,
+  targetMultiplier,
+  winChance,
+}) => {
+  const borderColor = drawnStatus ? "border-primary25" : "border-error";
+  const betVale = drawnStatus ? "text-primary" : "text-error";
 
   return (
     <div
@@ -18,7 +23,7 @@ export const RecentBetCard = ({ betStatus }) => {
         <RecentItem label="Target Multiplier" isETB={false} />
       </div>
       <p className={`${betVale} font-mono font-bold text-xl`}>
-        {betStatus === state.Win ? "WIN" : "LOSE"}
+        {drawnStatus ? "WIN" : "LOSE"}
       </p>
     </div>
   );

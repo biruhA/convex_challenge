@@ -3,13 +3,17 @@ import { DrawnTag } from "../atoms/DrawnTag";
 import { state } from "../../utils";
 import { Controller, useForm } from "react-hook-form";
 import { TextField } from "../atoms";
+import { useDispatch, useSelector } from "react-redux";
+import { setBet, setDrawn } from "../../reduxStore/slice/betSlice";
 
 export const FormSection = () => {
+  const dispatch = useDispatch();
   const {
     register,
     watch,
     handleSubmit,
     control,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -33,13 +37,22 @@ export const FormSection = () => {
       : 0;
 
   const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  const decimalCheck = (value) => {
-    const decimalPlace = 2;
-    const regex = new RegExp(`^\\d+(\\.\\d{1,${decimalPlace}})?$`);
-    return regex.test(value);
+    let randomDraw = parseFloat((Math.random() * 100 + 1).toFixed(2));
+    let drawnStatus = randomDraw >= targetMultiplier;
+    dispatch(
+      setBet({
+        ...data,
+        winChance,
+        profitOnWin,
+        drawnStatus,
+      })
+    );
+    dispatch(
+      setDrawn({
+        drawn: randomDraw,
+        drawnStatus,
+      })
+    );
   };
 
   return (
@@ -53,7 +66,6 @@ export const FormSection = () => {
             rules={{ required: "Bet amount is required." }}
             render={({ field }) => (
               <TextField
-                type="text"
                 {...field}
                 placeholder="Enter bet amount"
                 label="Bet Amount"
@@ -62,7 +74,6 @@ export const FormSection = () => {
             )}
           />
           <TextField
-            type="text"
             value={profitOnWin.toFixed(2)}
             placeholder="0.0000000000"
             readOnly
@@ -77,7 +88,6 @@ export const FormSection = () => {
             rules={{ required: "Target multiplier is required." }}
             render={({ field }) => (
               <TextField
-                type="text"
                 {...field}
                 placeholder="0.0000000000"
                 label="Target Multiplier"
@@ -88,7 +98,6 @@ export const FormSection = () => {
         </div>
         <div>
           <TextField
-            type="text"
             value={winChance.toFixed(2)}
             placeholder="0.0000000000"
             readOnly

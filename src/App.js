@@ -1,13 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "./reduxStore/slice";
-import AnimatedCounter from "./components/AnimatedCounter";
-import { DrawnTag } from "./components";
-import { MainPage } from "./pages";
+import { MainPage } from "./pages/MainPage";
 
 function App() {
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
   return (
     <div>
       <MainPage />

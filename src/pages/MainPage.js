@@ -1,5 +1,6 @@
 import React from "react";
 import { FormSection, RecentHistorySection, TopSection } from "../components";
+import { useSelector } from "react-redux";
 
 export const MainPage = () => {
   return (
