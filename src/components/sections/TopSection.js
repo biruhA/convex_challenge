@@ -1,18 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { DrawnTag } from "../atoms/DrawnTag";
-import { state } from "../../utils";
 import { useSelector } from "react-redux";
-import { motion, animate, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, animate, useTransform } from "framer-motion";
 
 export const TopSection = () => {
   const { drawn, drawnList, drawnStatus } = useSelector((state) => state.bet);
   const textColorClass = drawnStatus ? "text-primary" : "text-error";
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, drawn);
+  const nodeRef = useRef();
 
   useEffect(() => {
-    const animation = animate(count, drawn, { duration: 10 });
-    return animation.stop;
+    const node = nodeRef.current;
+
+    const controls = animate(1, drawn, {
+      duration: 1.5,
+      onUpdate(value) {
+        node.textContent = value.toFixed(2);
+      },
+    });
+
+    return () => controls.stop();
   }, [drawn]);
 
   return (
@@ -27,11 +33,15 @@ export const TopSection = () => {
         ))}
       </div>
       <div className="flex items-center justify-center h-full">
-        <motion.p
+        {/* <motion.p
           className={`font-mono font-semibold text-9xl ${textColorClass}`}
         >
-          {parseFloat(rounded)}X
-        </motion.p>
+          {rounded.current}X
+        </motion.p> */}
+        <p
+          ref={nodeRef}
+          className={`font-mono font-semibold text-9xl ${textColorClass}`}
+        />
       </div>
     </div>
   );

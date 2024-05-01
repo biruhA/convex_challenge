@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useSelector } from "react-redux";
 
 export default function AnimatedCounter() {
+  const { drawn } = useSelector((state) => state.bet);
   // Step 3: Create a motion value for the count
   const count = useMotionValue(0);
 
@@ -10,10 +12,10 @@ export default function AnimatedCounter() {
 
   // Step 5: Animate the motion value from 0 to 100 over 2 seconds
   useEffect(() => {
-    const animation = animate(count, 100, { duration: 10 });
+    const animation = animate(count, drawn, { duration: 10 });
     return animation.stop; // Ensure the animation stops when the component unmounts
-  }, []);
+  }, [drawn]);
 
   // Step 6: Display the animated value
-  return <motion.h1>{rounded}</motion.h1>;
+  return <motion.h1 className="text-white">{rounded}</motion.h1>;
 }

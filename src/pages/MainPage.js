@@ -1,6 +1,7 @@
 import React from "react";
 import { FormSection, RecentHistorySection, TopSection } from "../components";
 import { useSelector } from "react-redux";
+import AnimatedCounter from "../components/AnimatedCounter";
 
 export const MainPage = () => {
   return (
