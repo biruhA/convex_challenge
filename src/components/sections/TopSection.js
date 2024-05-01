@@ -22,15 +22,15 @@ export const TopSection = () => {
   }, [drawn]);
 
   return (
-    <div className="flex flex-col h-full rounded-2xl p-11 bg-background2 lg:overflow-hidden">
+    <div className="flex flex-col h-full rounded-2xl p-11 bg-background2 overflow-hidden">
       <div className="flex flex-row justify-center lg:justify-end gap-2">
         {drawnList.map((stateValue, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, x: 100 }}
+            initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
+            exit={{ opacity: 0, x: "-100%" }}
+            transition={{ ease: "linear" }}
           >
             <DrawnTag
               key={index}
