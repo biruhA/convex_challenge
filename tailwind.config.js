@@ -5,8 +5,11 @@ module.exports = {
     extend: {
       colors: {
         primary: "#007ec5",
-        primary50: "#007EC550",
+        primary25: "#007EC550",
+        primary50: "#007EC580",
+        primary75: "#007EC5B2",
         secondary: "#092145",
+        card: "#151a35",
         input: "#1e223d",
         accent: "",
         background: "#010624",
@@ -17,6 +20,7 @@ module.exports = {
         Warning: "",
         Disabled: "",
         Hover: "",
+        white50: "#FFFFFF80",
       },
       fontFamily: {
         mon: ["Montserrat"],

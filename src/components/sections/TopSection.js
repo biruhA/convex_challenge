@@ -7,7 +7,7 @@ export const TopSection = () => {
   const textColorClass = isError ? "text-error" : "text-primary";
 
   return (
-    <div className="flex flex-col rounded-2xl p-11 h-3/5 bg-background2">
+    <div className="flex flex-col h-full rounded-2xl p-11 bg-background2">
       <div className="flex flex-row justify-end gap-2">
         {[state.Lost, state.Lost, state.Win, state.Win, state.Win].map(
           (stateValue, index) => (

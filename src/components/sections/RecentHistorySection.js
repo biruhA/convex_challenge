@@ -1,19 +1,25 @@
 import React from "react";
 import { DrawnTag } from "../atoms/DrawnTag";
 import { state } from "../../utils";
+import { RecentBetCard } from "../card";
 
 export const RecentHistorySection = () => {
   return (
-    <div className="flex flex-col w-1/2 border-2 rounded-2xl p-11 bg-background border-primary50">
-      <div className="flex flex-row justify-end gap-2">
-        {[state.Lost, state.Lost, state.Win, state.Win, state.Win].map(
-          (stateValue, index) => (
-            <DrawnTag key={index} stateValue={stateValue} />
-          )
-        )}
-      </div>
-      <div className="flex items-center justify-center h-full">
-        <p className={`font-mono font-semibold text-9xl text-primary`}>2.59X</p>
+    <div className="flex flex-col w-4/6 border-2 rounded-2xl p-5 items-center bg-background border-primary25">
+      <p className="flex font-mono text-lg font-semibold text-white">
+        Recent History
+      </p>
+      <div className="flex flex-col mt-5 gap-1 w-full overflow-y-auto no-scrollbar">
+        <RecentBetCard betStatus={state.Win} />
+        <RecentBetCard betStatus={state.Lost} />
+        <RecentBetCard betStatus={state.Win} />
+        <RecentBetCard betStatus={state.Win} />
+        <RecentBetCard betStatus={state.Win} />
+        <RecentBetCard betStatus={state.Win} />
+        <RecentBetCard betStatus={state.Win} />
+        <RecentBetCard betStatus={state.Win} />
+        <RecentBetCard betStatus={state.Win} />
+        <RecentBetCard betStatus={state.Win} />
       </div>
     </div>
   );
