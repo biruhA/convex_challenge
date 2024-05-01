@@ -15,7 +15,7 @@ export const RecentBetCard = ({
     <div
       className={`flex flex-row w-full justify-between items-center italic border-2 rounded-2xl px-5 py-1.5 bg-card ${borderColor}`}
     >
-      <div className="flex flex-row justify-between w-2/5 items-center">
+      <div className="flex flex-row justify-between items-center w-3/4 lg:w-2/5">
         <RecentItem label="Bet Amount" />
         <Dot />
         <RecentItem label="Won Amount" />
@@ -32,12 +32,16 @@ export const RecentBetCard = ({
 function RecentItem({ label, isETB = true }) {
   return (
     <div className="flex flex-col gap-1">
-      <p className="text-white50 font-mono font-medium text-xs h-2">{label}</p>
+      <p className="text-white50 font-mono font-medium text-xxs lg:text-xs h-2">
+        {label}
+      </p>
       <div className="flex flex-row items-center gap-1">
         {isETB && (
-          <p className="text-white font-mono font-medium text-xs mt-1">ETB</p>
+          <p className="text-white font-mono font-medium text-xxs lg:text-xs mt-1">
+            ETB
+          </p>
         )}
-        <p className="text-white font-mono font-bold text-xl">100</p>
+        <p className="text-white font-mono font-bold text-sm lg:text-xl">100</p>
       </div>
     </div>
   );

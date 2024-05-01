@@ -56,7 +56,7 @@ export const FormSection = () => {
   };
 
   return (
-    <div className="flex flex-col w-3/6 bg-background2 rounded-2xl p-8">
+    <div className="flex flex-col w-full lg:w-3/6 bg-background2 rounded-2xl p-8">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
         <div className="flex flex-row gap-5">
           <Controller

@@ -26,7 +26,7 @@ export const betSlice = createSlice({
     setDrawn: (state, action) => {
       state.drawn = parseFloat(action.payload.drawn);
       state.drawnStatus = action.payload.drawnStatus;
-      if (state.drawnList.length >= 5) {
+      if (state.drawnList.length >= 6) {
         state.drawnList.shift();
       }
       state.drawnList.push({

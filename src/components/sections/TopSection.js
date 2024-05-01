@@ -22,25 +22,28 @@ export const TopSection = () => {
   }, [drawn]);
 
   return (
-    <div className="flex flex-col h-full rounded-2xl p-11 bg-background2">
-      <div className="flex flex-row justify-end gap-2">
+    <div className="flex flex-col h-full rounded-2xl p-11 bg-background2 lg:overflow-hidden">
+      <div className="flex flex-row justify-center lg:justify-end gap-2">
         {drawnList.map((stateValue, index) => (
-          <DrawnTag
+          <motion.div
             key={index}
-            drawnvalue={stateValue?.drawn}
-            stateValue={stateValue?.drawnStatus}
-          />
+            initial={{ opacity: 0, x: 100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5 }}
+          >
+            <DrawnTag
+              key={index}
+              drawnvalue={stateValue?.drawn}
+              stateValue={stateValue?.drawnStatus}
+            />
+          </motion.div>
         ))}
       </div>
       <div className="flex items-center justify-center h-full">
-        {/* <motion.p
-          className={`font-mono font-semibold text-9xl ${textColorClass}`}
-        >
-          {rounded.current}X
-        </motion.p> */}
         <p
           ref={nodeRef}
-          className={`font-mono font-semibold text-9xl ${textColorClass}`}
+          className={`font-mono font-semibold text-6xl lg:text-9xl ${textColorClass}`}
         />
       </div>
     </div>
